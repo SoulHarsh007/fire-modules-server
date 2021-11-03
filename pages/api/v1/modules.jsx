@@ -13,13 +13,13 @@ import modulesData from '../../../public/modules.json';
 export default async function moduleRequestHandler(req, res) {
   const privateKey = await importJWK(
     {
-      kty: 'EC',
-      x: 'AGoV_wMGCPXHV55cHzGkNyCPYztlstCJ8EUMlEPTRXz-2KNNG7Mrb3Gev-qVZ5JkMmwwzxseckdKXTM9To9zHf6R',
-      y: 'AODbsRgg0np-h5Bq8Wxn4PhheH88D2CzWBK5HFnpPfetkAygArdCvWifX6qpXpmbHPDygpBwD22v69olUBUnMpVu',
-      crv: 'P-521',
-      d: 'ACXYK7Zh_2iniQ1ZX4ai9Ru6qFWunvGqiVGX2RayMikkVR642Zde9OCXwebyQUCENy3o7fryhaA330SAfFd90vgA',
+      kty: process.env.PRIVATE_KEY_KTY,
+      x: process.env.PRIVATE_KEY_X,
+      y: process.env.PRIVATE_KEY_Y,
+      crv: process.env.PRIVATE_KEY_CRV,
+      d: process.env.PRIVATE_KEY_D,
     },
-    'ES512'
+    process.env.PRIVATE_KEY_ALG
   );
   res
     .setHeader(

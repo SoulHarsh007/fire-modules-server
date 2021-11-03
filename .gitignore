@@ -14,3 +14,4 @@ linux-unpacked*
 !.yarn/versions
 .pnp.*
 .scannerwork
+.env*
