@@ -1,4 +1,6 @@
 import 'tailwindcss/tailwind.css';
+import Head from 'next/head';
+import {useEffect} from 'react';
 
 /**
  * @author SoulHarsh007 <harsh.peshwani@outlook.com>
@@ -7,6 +9,19 @@ import 'tailwindcss/tailwind.css';
  * @param {import('next/app').AppProps} AppProps - next.js app props
  * @returns {any} - returns components
  */
-export default function app({Component, pageProps}) {
-  return <Component {...pageProps} />;
+export default function App({Component, pageProps}) {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+    // document.documentElement.classList.remove('dark');
+  }, []);
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }

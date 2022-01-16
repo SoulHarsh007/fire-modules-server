@@ -1,5 +1,5 @@
 import {SignJWT, importJWK} from 'jose';
-import modulesData from '../../../public/modules.json';
+import withMongo from '../../../util/useMongo';
 
 /**
  * @author SoulHarsh007 <harsh.peshwani@outlook.com>
@@ -11,6 +11,24 @@ import modulesData from '../../../public/modules.json';
  * @returns {void}
  */
 export default async function moduleRequestHandler(req, res) {
+  const db = await withMongo();
+  const modulesData = await db.collection('modules').findOne(
+    {},
+    {
+      projection: {
+        _id: 0,
+      },
+    }
+  );
+  res
+    .setHeader(
+      'Cache-Control',
+      'public, s-maxage=120, stale-while-revalidate=240'
+    )
+    .setHeader('Access-Control-Allow-Origin', '*');
+  if (req.query.raw) {
+    return res.status(200).json(modulesData);
+  }
   const privateKey = await importJWK(
     {
       kty: process.env.PRIVATE_KEY_KTY,
@@ -21,12 +39,6 @@ export default async function moduleRequestHandler(req, res) {
     },
     process.env.PRIVATE_KEY_ALG
   );
-  res
-    .setHeader(
-      'Cache-Control',
-      'public, s-maxage=120, stale-while-revalidate=240'
-    )
-    .setHeader('Access-Control-Allow-Origin', '*');
   if (req.method === 'GET') {
     return res.status(200).json({
       success: true,

@@ -1,6 +1,6 @@
 {
   "name": "RebornOS Fire Modules Server",
-  "short_name": "RebornOS Fire Modules Server",
+  "short_name": "RebornOSFire",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#0099ff",
   "background_color": "#ffffff",
   "display": "standalone"
 }

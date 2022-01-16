@@ -13,7 +13,7 @@ class MyDocument extends Document {
    */
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link
             rel="apple-touch-icon"
@@ -52,9 +52,15 @@ class MyDocument extends Document {
             name="msapplication-config"
             content="/favicons/browserconfig.xml"
           />
-          <meta name="theme-color" content="#ffffff" />
+          <meta
+            property="og:image"
+            content="https://fire.rebornos.org/fire.png"
+          />
+          <meta property="og:url" content="https://fire.rebornos.org/" />
+          <meta property="site_name" content="RebornOS FIRE" />
+          <meta property="og:type" content="website" />
         </Head>
-        <body>
+        <body className="dark:bg-gray-900">
           <Main />
           <NextScript />
         </body>
