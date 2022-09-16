@@ -20,7 +20,7 @@
     "bcrypt": "5.0.1",
     "friendly-words": "1.2.0",
     "iron-session": "6.0.5",
-    "jose": "4.6.0",
+    "jose": "4.9.2",
     "mongodb": "4.4.1",
     "next": "12.1.0",
     "next-connect": "0.12.2",
